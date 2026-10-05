@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Império — Tabacaria & Distribuidora de Bebidas</title>
+  <meta name="description" content="Sua distribuidora de bebidas e tabacaria de confiança em Santa Isabel - SP.">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper.js CSS (Carrossel profissional e fluido) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Fancybox CSS (Para abrir a foto grandona em tela cheia ao clicar) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css" />
+
+  <style>
+    :root {
+      --bg: #0b0b0a;
+      --surface: #141412;
+      --text: #f5f2eb;
+      --muted: #949086;
+      --gold: #d4af37;
+      --gold-hover: #e5c158;
+      --line: rgba(245, 242, 235, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+    }
+
+    /* NAV FIXA */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5vw;
+      background: rgba(11, 11, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* ESTILO DO LOGO NA NAVBAR */
+    .nav-logo-img {
+      display: block;
+      max-width: 190px; /* Tamanho compacto e elegante para o topo */
+      width: 100%;
+      height: auto;
+    }
+
+    .nav-whatsapp {
+      background: #25d366;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .nav-whatsapp:hover {
+      background: #20ba5a;
+    }
+
+    /* HERO FULL SCREEN */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 140px 5vw 70px;
+      isolation: isolate;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: 
+        linear-gradient(
+          90deg,
+          rgba(11, 11, 10, 0.92) 0%,
+          rgba(11, 11, 10, 0.75) 50%,
+          rgba(11, 11, 10, 0.4) 100%
+        ),
+        url("background.webp") center / cover no-repeat;
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    .hero-content {
+      max-width: 750px;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 110px);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(245, 242, 235, 0.85);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #0b0b0a;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-hover);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      background: rgba(20, 20, 18, 0.6);
+      backdrop-filter: blur(5px);
+      color: #fff;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+    }
+
+    /* SEÇÕES DO SITE */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 110px 5vw;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 15px;
+    }
+
+    .section-title em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 50px;
+      max-width: 550px;
+      line-height: 1.6;
+    }
+
+    /* GRID DE CATEGORIAS */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 35px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .category-card h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #fff;
+      font-family: var(--serif);
+    }
+
+    .category-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .category-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(245, 242, 235, 0.75);
+    }
+
+    .category-list li::before {
+      content: "— ";
+      color: var(--gold);
+    }
+
+    /* ESTILO DO CARROSSEL SWIPER & LIGHTBOX */
+    .gallery-section {
+      position: relative;
+      padding: 110px 5vw;
+      max-width: 1300px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .swiper {
+      width: 100%;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background: var(--surface);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      aspect-ratio: 9 / 16;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.02);
+      border-color: var(--gold);
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--muted);
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--gold);
+      opacity: 1;
+    }
+
+    /* INFO & LOCALIZAÇÃO */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .info-content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 35px;
+    }
+
+    .info-box h4 {
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+
+    .info-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #070706;
+      border-top: 1px solid var(--line);
+      padding: 45px 5vw;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    footer p span {
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: clamp(42px, 12vw, 75px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV COM O NOVO LOGO -->
+  <nav>
+    <a href="#" class="nav-logo-link">
+      <img src="logo.png" alt="Império Tabacaria e Distribuidora" class="nav-logo-img">
+    </a>
+    <a href="https://wa.me/5511973007049" target="_blank" class="nav-whatsapp">
+      WhatsApp
+    </a>
+  </nav>
+
+  <!-- HERO FULL SCREEN -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">SANTA ISABEL · SP</div>
+      <h1 class="hero-title serif">
+        Tudo para o seu rolê, <br><em>bebidas e tabacaria.</em>
+      </h1>
+      <p class="hero-desc">
+        A sua distribuidora de confiança. Variedade incomparável em cervejas, destilados, gelo, essências e acessórios com atendimento ágil.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5511973007049" target="_blank" class="btn-gold">Fazer Pedido no WhatsApp</a>
+        <a href="#produtos" class="btn-outline">Ver Departamentos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- DEPARTAMENTOS / PRODUTOS -->
+  <section class="section-container" id="produtos">
+    <h2 class="section-title serif">
+      O que você <em>encontra aqui.</em>
+    </h2>
+    <p class="section-subtitle">Trabalhamos com marcas selecionadas para abastecer o seu dia a dia ou o final de semana com rapidez e preço justo.</p>
+
+    <div class="categories-grid">
+      
+      <!-- Distribuidora -->
+      <div class="category-card">
+        <h3>Distribuidora de Bebidas</h3>
+        <p>Bebidas na temperatura certa e gelo sempre pronto para salvar o seu evento.</p>
+        <ul class="category-list">
+          <li>Cervejas geladas (Latas e Retornáveis)</li>
+          <li>Destilados (Whisky, Vodka, Gin, Tequila)</li>
+          <li>Energéticos e Refrigerantes</li>
+          <li>Gelo e Carvão</li>
+        </ul>
+      </div>
+
+      <!-- Tabacaria -->
+      <div class="category-card">
+        <h3>Tabacaria Completa</h3>
+        <p>O maior sortimento de essências e artigos para narguilé da região.</p>
+        <ul class="category-list">
+          <li>Essências variadas e Carvão de coco</li>
+          <li>Tabacos, Sedas e Piteiras</li>
+          <li>Charutos e Cigarros</li>
+          <li>Isqueiros e Maçaricos</li>
+        </ul>
+      </div>
+
+      <!-- Acessórios -->
+      <div class="category-card">
+        <h3>Acessórios & Conveniência</h3>
+        <p>Tudo o que você precisa em acessórios para equipar a sua sessão.</p>
+        <ul class="category-list">
+          <li>Peças e reposições para Narguilé</li>
+          <li>Cinzeiros e Utilidades</li>
+          <li>Artigos de conveniência geral</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERIA COM CARROSSEL PROFISSIONAL E TELA CHEIA (LIGHTBOX) -->
+  <section class="gallery-section">
+    <h2 class="section-title serif">
+      Conheça o <em>espaço.</em>
+    </h2>
+    <p class="section-subtitle">Arraste para o lado ou clique em qualquer foto para ampliar em tela cheia.</p>
+
+    <!-- Swiper Carrossel -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        
+        <!-- Foto 1 -->
+        <div class="swiper-slide">
+          <a href="foto1.webp" data-fancybox="galeria-imperio" data-caption="Prateleiras e Essências">
+            <img src="foto1.webp" alt="Prateleiras e Essências">
+          </a>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="swiper-slide">
+          <a href="foto2.webp" data-fancybox="galeria-imperio" data-caption="Variedade de Bebidas e Destilados">
+            <img src="foto2.webp" alt="Variedade de Bebidas e Destilados">
+          </a>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="swiper-slide">
+          <a href="foto3.webp" data-fancybox="galeria-imperio" data-caption="Detalhe do Estabelecimento">
+            <img src="foto3.webp" alt="Detalhe do Estabelecimento">
+          </a>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="swiper-slide">
+          <a href="foto4.webp" data-fancybox="galeria-imperio" data-caption="Organização da Loja">
+            <img src="foto4.webp" alt="Organização da Loja">
+          </a>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="swiper-slide">
+          <a href="foto5.webp" data-fancybox="galeria-imperio" data-caption="Expositor de Produtos">
+            <img src="foto5.webp" alt="Expositor de Produtos">
+          </a>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="swiper-slide">
+          <a href="foto6.webp" data-fancybox="galeria-imperio" data-caption="Sessão de Bebidas">
+            <img src="foto6.webp" alt="Sessão de Bebidas">
+          </a>
+        </div>
+
+        <!-- Foto 7 -->
+        <div class="swiper-slide">
+          <a href="foto7.webp" data-fancybox="galeria-imperio" data-caption="Artigos para Narguilé">
+            <img src="foto7.webp" alt="Artigos para Narguilé">
+          </a>
+        </div>
+
+        <!-- Foto 8 -->
+        <div class="swiper-slide">
+          <a href="foto8.webp" data-fancybox="galeria-imperio" data-caption="Variedade de Tabacaria">
+            <img src="foto8.webp" alt="Variedade de Tabacaria">
+          </a>
+        </div>
+
+        <!-- Foto 9 -->
+        <div class="swiper-slide">
+          <a href="foto9.webp" data-fancybox="galeria-imperio" data-caption="Ambiente Interno">
+            <img src="foto9.webp" alt="Ambiente Interno">
+          </a>
+        </div>
+
+        <!-- Foto 10 -->
+        <div class="swiper-slide">
+          <a href="foto10.webp" data-fancybox="galeria-imperio" data-caption="Detalhes da Loja">
+            <img src="foto10.webp" alt="Detalhes da Loja">
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Paginação (pontinhos discretos embaixo) -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- SOBRE / LOCALIZAÇÃO -->
+  <section class="section-container">
+    <div class="info-grid">
+      <div class="info-content">
+        <h2 class="section-title serif" style="margin-bottom: 20px;">
+          Tradição e praticidade em <em>Santa Isabel.</em>
+        </h2>
+        <p>A <strong>Império Tabacaria e Distribuidora</strong> é referência para quem busca qualidade, bom atendimento e agilidade. Nada de dor de cabeça procurando o que falta para o encontro com os amigos: aqui você encontra tudo reunido em um só lugar.</p>
+        <p>Consulte a disponibilidade de produtos ou faça sua encomenda direto pelo nosso WhatsApp com rapidez.</p>
+        <a href="https://wa.me/5511973007049" target="_blank" class="btn-gold" style="display: inline-block; margin-top: 10px;">Falar com a Loja</a>
+      </div>
+
+      <div class="info-box">
+        <h4>Informações Úteis</h4>
+        <ul>
+          <li><strong>Localização:</strong> Santa Isabel - SP</li>
+          <li><strong>Atendimento:</strong> Balcão e pedidos via WhatsApp</li>
+          <li><strong>Segurança:</strong> Proibida a venda para menores de 18 anos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><span>IMPÉRIO TABACARIA & DISTRIBUIDORA DE BEBIDAS</span> — Santa Isabel · SP</p>
+    <p style="margin-top: 8px; font-size: 10px; opacity: 0.5;">Se beber, não dirija. Venda proibida para menores de 18 anos.</p>
+  </footer>
+
+  <!-- Scripts das Bibliotecas Profissionais (Swiper.js e Fancybox) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 25,
+        },
+      },
+    });
+
+    Fancybox.bind("[data-fancybox='galeria-imperio']", {});
+  </script>
+
+</body>
+</html>
