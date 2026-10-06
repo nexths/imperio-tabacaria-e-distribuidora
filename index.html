@@ -100,7 +100,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* Centraliza o conteúdo no meio da tela */
+      justify-content: center;
       padding: 80px 5vw;
       isolation: isolate;
     }
@@ -124,6 +124,19 @@
       max-width: 750px;
       width: 100%;
       margin-left: 0;
+      animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* ANIMAÇÃO DE ENTRADA AUTOMÁTICA NA HERO */
+    @keyframes heroFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* LOGO REDONDO NA HERO */
@@ -403,6 +416,19 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ANIMAÇÃO FADE IN (REVEAL) PARA O SCROLL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -415,7 +441,7 @@
     </svg>
   </a>
 
-  <!-- HERO (CENTRALIZADA E COM LOGO) -->
+  <!-- HERO (CENTRALIZADA E COM LOGO ANIMADOS) -->
   <header class="hero">
     <div class="hero-bg"></div>
 
@@ -439,15 +465,17 @@
 
   <!-- DEPARTAMENTOS / PRODUTOS (SEM IMAGENS NOS CARDS) -->
   <section class="section-container" id="produtos">
-    <h2 class="section-title serif">
-      O que você <em>encontra aqui.</em>
-    </h2>
-    <p class="section-subtitle">Trabalhamos com marcas selecionadas para abastecer o seu dia a dia ou o final de semana com rapidez e preço justo.</p>
+    <div class="reveal">
+      <h2 class="section-title serif">
+        O que você <em>encontra aqui.</em>
+      </h2>
+      <p class="section-subtitle">Trabalhamos com marcas selecionadas para abastecer o seu dia a dia ou o final de semana com rapidez e preço justo.</p>
+    </div>
 
     <div class="categories-grid">
       
-      <!-- Card 1: Distribuidora de Bebidas -->
-      <div class="category-card">
+      <!-- Card 1 -->
+      <div class="category-card reveal">
         <h3>Distribuidora de Bebidas</h3>
         <p>Bebidas na temperatura certa e gelo sempre pronto para salvar o seu evento.</p>
         <ul class="category-list">
@@ -458,8 +486,8 @@
         </ul>
       </div>
 
-      <!-- Card 2: Tabacaria Completa -->
-      <div class="category-card">
+      <!-- Card 2 -->
+      <div class="category-card reveal">
         <h3>Tabacaria Completa</h3>
         <p>O maior sortimento de essências e artigos para narguilé da região.</p>
         <ul class="category-list">
@@ -470,8 +498,8 @@
         </ul>
       </div>
 
-      <!-- Card 3: Acessórios & Conveniência -->
-      <div class="category-card">
+      <!-- Card 3 -->
+      <div class="category-card reveal">
         <h3>Acessórios & Conveniência</h3>
         <p>Tudo o que você precisa em acessórios para equipar a sua sessão.</p>
         <ul class="category-list">
@@ -485,7 +513,7 @@
   </section>
 
   <!-- GALERIA -->
-  <section class="gallery-section">
+  <section class="gallery-section reveal">
     <h2 class="section-title serif">
       Conheça o <em>espaço.</em>
     </h2>
@@ -552,7 +580,7 @@
   </section>
 
   <!-- SOBRE / LOCALIZAÇÃO -->
-  <section class="section-container">
+  <section class="section-container reveal">
     <div class="info-grid">
       <div class="info-content">
         <h2 class="section-title serif" style="margin-bottom: 20px;">
@@ -607,6 +635,26 @@
     });
 
     Fancybox.bind("[data-fancybox='galeria-imperio']", {});
+
+    // Script de Fade In (Reveal) no scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(element => {
+      observer.observe(element);
+    });
   </script>
 
 </body>
