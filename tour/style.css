@@ -1,0 +1,363 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -ms-content-zooming: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+}
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+#pano {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --- TARJA DE TÍTULO E BOTÃO DE TELA CHEIA REMOVIDOS --- */
+#titleBar, #fullscreenToggle {
+  display: none !important;
+}
+
+/* --- BOTÕES NO TOPO (UI CLEAN SVG) --- */
+#sceneListToggle,
+#autorotateToggle,
+#musicToggle {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: none !important;
+  background-color: transparent !important;
+  z-index: 20;
+}
+
+.mobile #sceneListToggle,
+.mobile #autorotateToggle,
+.mobile #musicToggle {
+  width: 50px;
+  height: 50px;
+}
+
+/* Alinhamento no topo */
+#sceneListToggle { left: 0; }
+#musicToggle { right: 0; }
+#autorotateToggle { right: 40px; }
+
+.mobile #musicToggle { right: 0; }
+.mobile #autorotateToggle { right: 50px; }
+
+/* Ícones SVG */
+#sceneListToggle .icon,
+#autorotateToggle .icon, 
+#musicToggle .icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+}
+
+#sceneListToggle .icon {
+  left: 8px;
+  right: auto;
+}
+
+.mobile #sceneListToggle .icon,
+.mobile #autorotateToggle .icon, 
+.mobile #musicToggle .icon {
+  top: 13px;
+  right: 13px;
+}
+.mobile #sceneListToggle .icon {
+  left: 13px;
+  right: auto;
+}
+
+/* Estados Ligado/Desligado */
+#sceneListToggle .icon.on,
+#autorotateToggle .icon.on,
+#musicToggle .icon.on {
+  display: none;
+}
+
+#sceneListToggle.enabled .icon.off,
+#autorotateToggle.enabled .icon.off,
+#musicToggle.enabled .icon.off {
+  display: none;
+}
+
+#sceneListToggle.enabled .icon.on,
+#autorotateToggle.enabled .icon.on,
+#musicToggle.enabled .icon.on {
+  display: block;
+}
+
+/* --- MENU LATERAL DE CENAS --- */
+#sceneList {
+  position: absolute;
+  top: 0;
+  left: -220px;
+  padding-top: 40px;
+  width: 220px;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: margin-left 0.5s ease-in-out;
+  margin-left: 0;
+  z-index: 15;
+}
+
+.mobile #sceneList {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+}
+
+#sceneList .scenes {
+  width: 100%;
+  background-color: rgba(58,68,84,0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.mobile #sceneList.enabled {
+  margin-left: 100%;
+}
+
+.mobile #sceneList .scenes {
+  height: 100%;
+}
+
+#sceneList.enabled {
+  margin-left: 220px;
+}
+
+#sceneList .scene {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+.mobile #sceneList .scene {
+  height: 40px;
+}
+
+#sceneList .scene .text {
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile #sceneList .scene .text {
+  line-height: 40px;
+}
+
+.no-touch #sceneList .scene:hover,
+#sceneList .scene.current {
+  background-color: rgba(103,115,131,0.8);
+}
+
+body.single-scene #sceneList, body.single-scene #sceneListToggle {
+  display: none;
+}
+
+/* ==========================================
+   LINK HOTSPOT - BOLINHA DISCRETA E PULSANTE
+   ========================================== */
+/* ==========================================
+   LINK HOTSPOT - BOLINHA TRANSPARENTE E PULSANTE
+   ========================================== */
+.link-hotspot {
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -12px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* O corpo da bolinha (Totalmente transparente agora) */
+.link-hotspot-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent; /* Miolo transparente */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Apenas uma linha sutil p/ saber onde clicar */
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* O anel invisível por padrão que fará o "pulso" */
+.link-hotspot-container::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Animação do pulso de Radar */
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* QUANDO ATIVADO (QUANDO O USUÁRIO APONTAR A CÂMERA): */
+.link-hotspot.active .link-hotspot-container {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.15);
+}
+
+/* O anel começa a pulsar apenas quando ativo */
+.link-hotspot.active .link-hotspot-container::after {
+  animation: radarPulse 1.6s infinite ease-out;
+}
+
+/* Tooltip (Legenda) adaptada para aparecer junto à bolinha */
+.link-hotspot-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 135%;
+  transform: translateX(-50%) translateY(5px);
+  margin-left: 0;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Exibe a etiqueta quando a câmera ESTÁ APONTADA pra ela OU ao PASSAR O MOUSE */
+.no-touch .link-hotspot:hover .link-hotspot-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-fallback .link-hotspot-tooltip {
+  display: none;
+}
+.no-touch .tooltip-fallback .link-hotspot.active .link-hotspot-tooltip,
+.no-touch .tooltip-fallback .link-hotspot:hover .link-hotspot-tooltip {
+  display: block;
+}
+
+/* ... (Mantenha o restante das classes viewControlButton e info-hotspot que já estavam no final) ... */
+
+/* Info hotspot */
+.info-hotspot {
+  line-height: 1.2em;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.no-touch .info-hotspot:hover {
+  opacity: 1;
+}
+
+.info-hotspot.visible {
+  opacity: 1;
+}
+
+.info-hotspot .info-hotspot-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(103,115,131,0.8);
+  cursor: pointer;
+}
+
+/* View control buttons */
+.viewControlButton {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: rgba(103,115,131,0.8);
+}
+
+body.view-control-buttons .viewControlButton {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  body.view-control-buttons .viewControlButton {
+    display: none;
+  }
+}
+
+.viewControlButton .icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.viewControlButton-1 { margin-left: -145px; }
+.viewControlButton-2 { margin-left: -95px; }
+.viewControlButton-3 { margin-left: -45px; }
+.viewControlButton-4 { margin-left: 5px; }
+.viewControlButton-5 { margin-left: 55px; }
+.viewControlButton-6 { margin-left: 105px; }
+
+/* Adições extras de visibilidade e tooltips contidas no Info Hotspot */
+.info-hotspot .info-hotspot-icon-wrapper { width: 40px; height: 40px; }
+.mobile .info-hotspot .info-hotspot-icon-wrapper { width: 50px; height: 50px; }
+.info-hotspot .info-hotspot-icon { width: 90%; height: 90%; margin: 5%; }
+.info-hotspot-modal { display: none; }

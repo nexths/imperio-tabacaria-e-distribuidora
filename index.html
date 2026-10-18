@@ -1,666 +1,548 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Império — Tabacaria & Distribuidora de Bebidas</title>
-  <meta name="description" content="Sua distribuidora de bebidas e tabacaria de confiança em Santa Isabel - SP.">
-
-  <!-- Open Graph / Redes Sociais (Preview para WhatsApp, Facebook, etc.) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nexths.github.io/imperio-tabacaria-e-distribuidora/">
-  <meta property="og:title" content="Império — Tabacaria & Distribuidora de Bebidas">
-  <meta property="og:description" content="Sua distribuidora de bebidas e tabacaria de confiança em Santa Isabel - SP.">
-  <meta property="og:image" content="https://nexths.github.io/imperio-tabacaria-e-distribuidora/assets/preview.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Império — Tabacaria & Distribuidora de Bebidas">
-  <meta name="twitter:description" content="Sua distribuidora de bebidas e tabacaria de confiança em Santa Isabel - SP.">
-  <meta name="twitter:image" content="https://nexths.github.io/imperio-tabacaria-e-distribuidora/assets/preview.jpg">
-
-  <!-- Fontes -->
+  <meta name="theme-color" content="#10100f">
+  <title>Império | Tabacaria & Distribuidora</title>
+  <meta name="description" content="Bebidas, tabacaria e conveniência em Santa Isabel. Consulte produtos e faça seu pedido pelo WhatsApp.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Swiper.js CSS (Carrossel profissional e fluido) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   
-  <!-- Fancybox CSS (Para abrir a foto grandona em tela cheia ao clicar) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css" />
 
   <style>
     :root {
-      --bg: #0b0b0a;
-      --surface: #141412;
-      --text: #f5f2eb;
-      --muted: #949086;
+      --bg: #10100f;
+      --bg-2: #171715;
+      --panel: #1d1c19;
+      --cream: #f2eee5;
+      --muted: #aaa397;
       --gold: #d4af37;
-      --gold-hover: #e5c158;
-      --line: rgba(245, 242, 235, 0.12);
+      --gold-light: #e5c158;
+      --line: rgba(242,238,229,.14);
+      --max: 1240px;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: var(--bg);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .serif {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-weight: 400;
-    }
-
-    /* BOTÃO FLUTUANTE DO WHATSAPP (COMPACTO E DISCRETO) */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: #fff;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.15);
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.08);
-      background: #20ba5a;
-    }
-
-    .whatsapp-float svg {
-      width: 24px;
-      height: 24px;
-      fill: #fff;
-    }
-
-    /* HERO FULL SCREEN (TEXTO CENTRALIZADO VERTICALMENTE) */
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 5vw;
-      isolation: isolate;
-    }
-
-    .hero-bg {
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { background: var(--bg); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    body::selection { background: var(--gold); color: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    .serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; }
+    .topline { background: var(--gold); color: #17140e; text-align: center; padding: 9px 16px; font-size: 10px; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; }
+    .header { position: absolute; z-index: 10; top: 36px; left: 0; right: 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 190px; }
+    .brand-logo-img { width: 50px; height: 50px; object-fit: contain; border-radius: 50%; border: 1.5px solid var(--gold); background: #0b0b0a; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
+    .brand-name { font-size: 11px; font-weight: 700; letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; }
+    .brand-name span { display: block; color: var(--gold); font-size: 9px; letter-spacing: .19em; font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: rgba(242,238,229,.8); font-size: 12px; }
+    .nav-links a { transition: color .25s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(212,175,55,.65); padding: 13px 17px; font-size: 10px; letter-spacing: .1em; font-weight: 700; text-transform: uppercase; transition: .25s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--gold); color: #17140e; }
+    
+    .hero { min-height: 780px; min-height: min(900px, 100svh); position: relative; display: flex; align-items: center; isolation: isolate; padding: 170px 0 100px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(90deg, rgba(12,12,11,.94) 0%, rgba(12,12,11,.78) 42%, rgba(12,12,11,.28) 100%), linear-gradient(0deg, rgba(12,12,11,.78), transparent 45%), url('assets/background.webp'); background-size: cover; background-position: center; transform: scale(1.02); animation: heroDrift 18s ease-in-out infinite alternate; }
+    .hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 72% 45%, transparent 0%, rgba(0,0,0,.12) 42%, rgba(0,0,0,.48) 100%); pointer-events: none; }
+    .hero-inner { position: relative; width: min(var(--max), calc(100% - 48px)); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px,.7fr); align-items: end; gap: 70px; }
+    .hero-copy { max-width: 730px; animation: rise .9s both; }
+    .hero-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
+    .hero-kicker span { width: 34px; height: 1px; background: var(--gold); }
+    h1 { max-width: 790px; font-size: clamp(54px, 7.3vw, 104px); line-height: .95; letter-spacing: -.055em; }
+    h1 em { color: var(--gold-light); font-weight: 500; }
+    .hero-desc { max-width: 470px; margin-top: 28px; color: rgba(242,238,229,.78); font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    
+    .btn { min-height: 51px; display: inline-flex; align-items: center; justify-content: center; gap: 15px; padding: 0 21px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: transform .25s, background .25s, border-color .25s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-gold { background: var(--gold); color: #17140e; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-ghost { border: 1px solid rgba(242,238,229,.35); background: rgba(10,10,9,.18); }
+    .btn-ghost:hover { border-color: var(--gold); }
+    
+    .hero-note { justify-self: end; width: min(100%, 300px); padding: 24px; border: 1px solid rgba(242,238,229,.25); background: rgba(17,17,15,.54); backdrop-filter: blur(12px); animation: rise 1s .18s both; }
+    .hero-note-top { display: flex; justify-content: space-between; align-items: center; color: var(--gold); font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .hero-note .big { margin: 23px 0 10px; font-family: 'Playfair Display',serif; font-size: 31px; line-height: 1.08; }
+    .hero-note p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .note-line { height: 1px; margin-top: 22px; background: var(--line); }
+    .hero-bottom { position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid rgba(255,255,255,.16); }
+    .hero-bottom-inner { display: flex; align-items: center; justify-content: space-between; min-height: 58px; gap: 20px; color: rgba(242,238,229,.66); font-size: 9px; letter-spacing: .15em; text-transform: uppercase; }
+    .scroll-cue { display: flex; align-items: center; gap: 10px; }
+    .scroll-cue i { display: block; width: 28px; height: 1px; background: var(--gold); }
+    
+    .trust-strip { background: var(--gold); color: #19160f; }
+    .trust-inner { min-height: 94px; display: grid; grid-template-columns: repeat(3,1fr); align-items: center; gap: 24px; }
+    .trust-item { display: flex; align-items: center; justify-content: center; gap: 13px; padding: 15px 0; border-right: 1px solid rgba(25,22,15,.2); }
+    .trust-item:last-child { border: 0; }
+    .trust-icon { font-size: 22px; }
+    .trust-item strong { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .trust-item span { display: block; margin-top: 4px; font-size: 11px; opacity: .7; }
+    
+    section { scroll-margin-top: 30px; }
+    .section { padding: 115px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 48px; }
+    .section-head h2 { max-width: 650px; margin-top: 17px; font-size: clamp(39px,5vw,68px); line-height: .99; letter-spacing: -.045em; }
+    .section-head h2 em { color: var(--gold); }
+    .section-intro { max-width: 360px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    
+    .category-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; }
+    .category-card { min-height: 550px; position: relative; overflow: hidden; isolation: isolate; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+    .category-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .category-card::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, rgba(9,9,8,.95) 0%, rgba(9,9,8,.5) 43%, rgba(9,9,8,.04) 100%); }
+    .category-card:hover img { transform: scale(1.07); }
+    .category-content { position: absolute; inset: auto 0 0; padding: 28px; }
+    .category-number { display: inline-block; color: var(--gold-light); font-size: 10px; letter-spacing: .16em; margin-bottom: 12px; }
+    .category-content h3 { font-family: 'Playfair Display',serif; font-weight: 500; font-size: clamp(26px,2.5vw,34px); line-height: 1.05; }
+    .category-content p { max-width: 300px; margin-top: 12px; color: rgba(242,238,229,.72); font-size: 12px; line-height: 1.7; }
+    .category-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 20px; color: var(--gold-light); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+    .category-link b { font-size: 17px; font-weight: 400; transition: transform .2s; }
+    .category-card:hover .category-link b { transform: translateX(5px); }
+    
+    .marquee { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); }
+    .marquee-track { display: flex; width: max-content; gap: 34px; padding: 19px 0; animation: marquee 32s linear infinite; }
+    .marquee span { color: var(--muted); font-family: 'Playfair Display',serif; font-size: 20px; white-space: nowrap; }
+    .marquee b { color: var(--gold); font-size: 13px; font-weight: 400; }
+    
+    /* SEÇÃO DO TOUR VIRTUAL / FEATURE */
+    .feature { padding: 115px 0; background: #191916; }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(40px,7vw,100px); }
+    .feature-photo { position: relative; min-height: 570px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+    .feature-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .feature-photo:hover img { transform: scale(1.03); }
+    
+    /* Barra indicativa de Tour Interativo */
+    .tour-hint {
       position: absolute;
-      inset: 0;
-      z-index: -2;
-      background: 
-        linear-gradient(
-          90deg,
-          rgba(11, 11, 10, 0.92) 0%,
-          rgba(11, 11, 10, 0.75) 50%,
-          rgba(11, 11, 10, 0.4) 100%
-        ),
-        url("assets/background.webp") center / cover no-repeat;
-      filter: brightness(0.85) contrast(1.05);
-    }
-
-    .hero-content {
-      max-width: 750px;
-      width: 100%;
-      margin-left: 0;
-      animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* ANIMAÇÃO DE ENTRADA AUTOMÁTICA NA HERO */
-    @keyframes heroFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* LOGO REDONDO NA HERO (COM A BORDA ORIGINAL) */
-    .hero-logo-img {
-      display: block;
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      border-radius: 50%;
-      margin-bottom: 35px;
-      border: 2px solid var(--gold);
-      background: #0b0b0a;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .hero-title {
-      font-size: clamp(48px, 8vw, 110px);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      margin-bottom: 25px;
-      font-weight: 400;
-    }
-
-    .hero-title em {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .hero-desc {
-      font-size: 16px;
-      color: rgba(245, 242, 235, 0.85);
-      max-width: 480px;
-      line-height: 1.6;
-      margin-bottom: 35px;
-      font-weight: 300;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: #0b0b0a;
-      padding: 15px 28px;
-      border-radius: 4px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      color: var(--gold-light);
+      padding: 35px 20px 18px;
+      font-size: 10px;
       font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: background 0.2s;
-    }
-
-    .btn-gold:hover {
-      background: var(--gold-hover);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--line);
-      background: rgba(20, 20, 18, 0.6);
-      backdrop-filter: blur(5px);
-      color: #fff;
-      padding: 15px 28px;
-      border-radius: 4px;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: border-color 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-    }
-
-    /* SEÇÕES DO SITE */
-    .section-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 110px 4vw;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-title {
-      font-size: clamp(38px, 5vw, 65px);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 15px;
-    }
-
-    .section-title em {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 50px;
-      max-width: 550px;
-      line-height: 1.6;
-    }
-
-    /* GRID DE CATEGORIAS: 3 CARDS LADO A LADO SEM IMAGENS */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .category-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 40px 35px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .category-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-    }
-
-    .category-card h3 {
-      font-size: 26px;
-      font-weight: 500;
-      margin-bottom: 12px;
-      color: #fff;
-      font-family: var(--serif);
-    }
-
-    .category-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .category-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 13px;
-      color: rgba(245, 242, 235, 0.8);
-      margin-top: auto;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-    }
-
-    .category-list li::before {
-      content: "— ";
-      color: var(--gold);
-    }
-
-    /* ESTILO DO CARROSSEL SWIPER & LIGHTBOX */
-    .gallery-section {
-      position: relative;
-      padding: 110px 5vw;
-      max-width: 1300px;
-      margin: 0 auto;
-      border-top: 1px solid var(--line);
-    }
-
-    .swiper {
-      width: 100%;
-      padding-bottom: 50px;
-    }
-
-    .swiper-slide {
-      background: var(--surface);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      aspect-ratio: 9 / 16;
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .swiper-slide:hover {
-      transform: scale(1.02);
-      border-color: var(--gold);
-    }
-
-    .swiper-pagination-bullet {
-      background: var(--muted);
-      opacity: 0.5;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: var(--gold);
-      opacity: 1;
-    }
-
-    /* INFO & LOCALIZAÇÃO */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .info-content p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 25px;
-    }
-
-    .info-box {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 35px;
-    }
-
-    .info-box h4 {
-      font-size: 14px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      color: var(--gold);
-    }
-
-    .info-box ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #070706;
-      border-top: 1px solid var(--line);
-      padding: 45px 5vw;
       text-align: center;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
+      opacity: 0.9;
+      transition: opacity 0.3s ease, color 0.3s ease;
     }
+    .feature-photo:hover .tour-hint { opacity: 1; color: #fff; }
 
-    footer p span {
-      color: #fff;
-    }
+    .feature-copy h2 { margin-top: 18px; font-size: clamp(40px,5vw,65px); line-height: 1; letter-spacing: -.045em; }
+    .feature-copy h2 em { color: var(--gold); }
+    .feature-copy > p { margin-top: 24px; max-width: 490px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .feature-points { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; margin-top: 35px; }
+    .feature-point { border-top: 1px solid var(--line); padding-top: 15px; }
+    .feature-point b { color: var(--gold); font-size: 10px; letter-spacing: .12em; }
+    .feature-point span { display: block; margin-top: 7px; color: var(--cream); font-size: 12px; }
+    .feature-copy .btn { margin-top: 34px; }
+    
+    .gallery { padding: 110px 0 120px; }
+    .gallery-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 36px; }
+    .gallery-head h2 { margin-top: 16px; font-size: clamp(40px,5vw,66px); line-height: 1; letter-spacing: -.04em; }
+    .gallery-head h2 em { color: var(--gold); }
+    .gallery-head p { max-width: 320px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    
+    .swiper { width: 100%; padding-bottom: 50px; }
+    .swiper-slide { background: var(--panel); border-radius: 8px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 9 / 16; cursor: zoom-in; transition: transform 0.3s ease; }
+    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .swiper-slide:hover { transform: scale(1.02); border-color: var(--gold); }
+    .swiper-pagination-bullet { background: var(--muted); opacity: 0.5; }
+    .swiper-pagination-bullet-active { background: var(--gold); opacity: 1; }
 
+    .order-band { position: relative; overflow: hidden; padding: 76px 0; background: var(--gold); color: #17140e; }
+    .order-band::after { content: "IMPÉRIO"; position: absolute; right: -20px; bottom: -68px; font-family: 'Playfair Display',serif; font-size: clamp(130px,24vw,330px); line-height: 1; color: rgba(23,20,14,.06); pointer-events: none; }
+    .order-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+    .order-inner .eyebrow { color: #51401c; }
+    .order-inner h2 { max-width: 700px; margin-top: 13px; font-family: 'Playfair Display',serif; font-size: clamp(38px,5.5vw,72px); line-height: .98; letter-spacing: -.04em; }
+    .order-inner p { margin-top: 15px; color: rgba(23,20,14,.72); font-size: 13px; }
+    .btn-dark { background: #17140e; color: var(--cream); flex-shrink: 0; }
+    .btn-dark:hover { background: #302819; }
+    
+    /* SEÇÃO DE CONTATO E REDES SOCIAIS */
+    .contact { padding: 105px 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr .85fr; gap: 60px; }
+    .contact h2 { margin-top: 17px; font-size: clamp(40px,5vw,65px); line-height: .98; letter-spacing: -.04em; }
+    .contact h2 em { color: var(--gold); }
+    .contact-copy > p { max-width: 500px; margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .contact-details { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    
+    .detail-link { display: flex; gap: 17px; padding: 22px 0; border-bottom: 1px solid var(--line); transition: background .2s ease; }
+    .detail-link:hover strong { color: var(--gold-light); }
+    .detail-icon { color: var(--gold); width: 26px; height: 26px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .detail-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .detail-content strong { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .detail-content span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    
+    footer { padding: 27px 0; background: #090908; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #827d72; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .footer-brand { color: var(--cream); }
+    .footer-credit a { color: var(--gold); transition: color .2s; }
+    .footer-credit a:hover { color: var(--gold-light); text-decoration: underline; }
+    .footer-inner a:hover { color: var(--gold); }
+    
+    .whatsapp { position: fixed; z-index: 50; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 10px; padding: 13px 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 40px; background: #1d9d59; color: white; box-shadow: 0 10px 35px rgba(0,0,0,.35); font-size: 11px; font-weight: 700; transition: transform .2s, background .2s; }
+    .whatsapp:hover { transform: translateY(-3px); background: #16884b; }
+    .whatsapp svg { width: 20px; height: 20px; fill: currentColor; }
+    
+    .reveal { opacity: 1; transform: none; }
+    
+    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroDrift { from { transform: scale(1.02) translateX(0); } to { transform: scale(1.08) translateX(-1%); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    
     @media (max-width: 900px) {
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero-title {
-        font-size: clamp(42px, 12vw, 75px);
-      }
-      .categories-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { gap: 17px; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 38px; }
+      .hero { min-height: 800px; padding-top: 170px; padding-bottom: 100px; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+      .category-card:first-child { grid-column: span 2; min-height: 500px; }
+      .category-card { min-height: 500px; }
+      .feature-grid { gap: 45px; }
+      .feature-photo { min-height: 480px; }
+      .contact-grid { gap: 35px; }
     }
-
-    /* ANIMAÇÃO FADE IN (REVEAL) PARA O SCROLL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* REDES SOCIAIS MINIMALISTAS NO CANTO SUPERIOR DIREITO (SEM CAIXAS/BORDAS) */
-    .top-social {
-      position: absolute;
-      top: 30px;
-      right: 5vw;
-      z-index: 50;
-      display: flex;
-      gap: 18px;
-    }
-
-    .social-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(245, 242, 235, 0.75);
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .social-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
+    
+    @media (max-width: 620px) {
+      .wrap, .hero-inner { width: calc(100% - 36px); }
+      .topline { font-size: 8px; letter-spacing: .12em; }
+      .header { top: 32px; }
+      .nav { min-height: 75px; gap: 12px; }
+      .brand { min-width: 0; gap: 9px; }
+      .brand-logo-img { width: 40px; height: 40px; }
+      .brand-name { font-size: 9px; letter-spacing: .12em; }
+      .brand-name span { font-size: 7px; }
+      
+      /* LIMPEZA DA HERO NO CELULAR: Esconde links e botão duplo do topo */
+      .nav-links, .nav-cta { display: none; }
+      
+      .hero { min-height: auto; padding: 130px 0 60px; align-items: flex-start; }
+      .hero-bg { background-position: 58% center; background-image: linear-gradient(90deg,rgba(12,12,11,.82),rgba(12,12,11,.48)),linear-gradient(0deg,rgba(12,12,11,.9),transparent 65%),url('assets/background.webp'); }
+      .hero-inner { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
+      
+      .hero-note { display: none; }
+      
+      .hero-kicker { margin-bottom: 16px; font-size: 9px; }
+      h1 { font-size: clamp(44px, 13vw, 68px); line-height: .96; }
+      .hero-desc { margin-top: 16px; font-size: 13px; line-height: 1.7; }
+      .hero-actions { margin-top: 22px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+      .btn { min-height: 48px; }
+      .hero-bottom-inner { min-height: 54px; font-size: 8px; }
+      .hero-bottom-inner > span:nth-child(2) { display: none; }
+      
+      /* FAIXA AMARELA MAIS COMPACTA NO CELULAR */
+      .trust-inner { grid-template-columns: 1fr; gap: 0; padding: 0; }
+      .trust-item { justify-content: flex-start; border-right: 0; border-bottom: 1px solid rgba(25,22,15,.18); padding: 12px 4px; }
+      .trust-item:last-child { border-bottom: 0; }
+      
+      .section, .feature, .gallery { padding: 65px 0; }
+      .section-head, .gallery-head { display: block; margin-bottom: 30px; }
+      .section-head h2, .gallery-head h2 { font-size: 40px; }
+      .section-intro, .gallery-head p { margin-top: 16px; }
+      .category-grid { grid-template-columns: 1fr; gap: 12px; }
+      .category-card, .category-card:first-child { grid-column: auto; min-height: 450px; }
+      .category-content { padding: 23px; }
+      .marquee-track { padding: 15px 0; gap: 22px; }
+      .marquee span { font-size: 17px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 35px; }
+      .feature-photo { min-height: 380px; }
+      .feature-copy h2 { font-size: 40px; }
+      .feature-points { gap: 18px 12px; }
+      .order-band { padding: 62px 0; }
+      .order-inner { display: block; }
+      .order-inner h2 { font-size: 42px; }
+      .order-inner .btn { margin-top: 25px; width: 100%; }
+      .contact { padding: 65px 0; }
+      .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .contact h2 { font-size: 40px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; line-height: 1.8; }
+      .whatsapp { right: 14px; bottom: 14px; width: 52px; height: 52px; padding: 0; justify-content: center; }
+      .whatsapp span { display: none; }
     }
   </style>
 </head>
-
 <body>
+  <div class="topline">Império Tabacaria & Distribuidora · Santa Isabel — SP</div>
 
-  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
-  <a href="https://wa.me/5511973007049" target="_blank" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-    </svg>
-  </a>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-bg"></div>
-
-    <!-- Apenas os 3 Ícones (Instagram, Facebook e Google Maps com o furo original) -->
-    <div class="top-social">
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/imperioo_distribuidora/" target="_blank" class="social-icon" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  <header class="header">
+    <nav class="nav wrap" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Império - início">
+        <img src="assets/logo.png" alt="Império Logo" class="brand-logo-img">
+        <span class="brand-name">Império<span>Tabacaria & Distribuidora</span></span>
       </a>
-
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/profile.php?id=100089528454028&mibextid=ZbWKwL" target="_blank" class="social-icon" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.59 0 9 1.581 9 4.75V8z"/></svg>
-      </a>
-
-      <!-- Google Maps (Com o alfinete clássico e o buraquinho/furo no meio) -->
-      <a href="https://maps.app.goo.gl/f29mpVznGw76yJgLA" target="_blank" class="social-icon" aria-label="Google Localização">
-        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Maps</title><path d="M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z"/></svg>
-      </a>
-    </div>
-
-    <div class="hero-content">
-      <!-- Logo Redondo com a Borda Original -->
-      <img src="assets/logo.png" alt="Império Tabacaria e Distribuidora" class="hero-logo-img">
-      
-      <div class="hero-eyebrow">SANTA ISABEL · SP</div>
-      <h1 class="hero-title serif">
-        Tudo para o seu rolê, <br><em>bebidas e tabacaria.</em>
-      </h1>
-      <p class="hero-desc">
-        A sua distribuidora de confiança. Variedade incomparável em cervejas, destilados, gelo, essências e acessórios com atendimento ágil.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wa.me/5511973007049" target="_blank" class="btn-gold">Fazer Pedido no WhatsApp</a>
-        <a href="#produtos" class="btn-outline">Ver Produtos</a>
+      <div class="nav-links">
+        <a href="#categorias">Categorias</a>
+        <a href="#espaco">A loja</a>
+        <a href="#contato">Localização</a>
       </div>
-    </div>
+      <a class="nav-cta" href="https://wa.me/5511973007049" target="_blank" rel="noopener">Pedir pelo WhatsApp <span>↗</span></a>
+    </nav>
   </header>
 
-  <!-- DEPARTAMENTOS / PRODUTOS -->
-  <section class="section-container" id="produtos">
-    <div class="reveal">
-      <h2 class="section-title serif">
-        O que você <em>encontra aqui.</em>
-      </h2>
-      <p class="section-subtitle">Trabalhamos com marcas selecionadas para abastecer o seu dia a dia ou o final de semana com rapidez e preço justo.</p>
-    </div>
-
-    <div class="categories-grid">
-      <div class="category-card reveal">
-        <h3>Distribuidora de Bebidas</h3>
-        <p>Bebidas na temperatura certa e gelo sempre pronto para salvar o seu evento.</p>
-        <ul class="category-list">
-          <li>Cervejas geladas (Latas e Retornáveis)</li>
-          <li>Destilados (Whisky, Vodka, Gin, Tequila)</li>
-          <li>Energéticos e Refrigerantes</li>
-          <li>Gelo e Carvão</li>
-        </ul>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span></span> Seu ponto de encontro em Santa Isabel</div>
+          <h1 class="serif">Seu rolê começa <em>aqui.</em></h1>
+          <p class="hero-desc">Bebidas, Essências, narguiles e aquele item que faltava para completar o momento. Encontre variedade, praticidade e atendimento direto com a Império.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="https://wa.me/5511973007049" target="_blank" rel="noopener">Chamar no WhatsApp <span>↗</span></a>
+            <a class="btn btn-ghost" href="#categorias">Conhecer a Império <span>↓</span></a>
+          </div>
+        </div>
+        <aside class="hero-note">
+          <div class="hero-note-top"><span>Na sua região</span><span>✳</span></div>
+          <div class="big">Tudo mais perto.<br><em>Sem complicação.</em></div>
+          <p>Consulte a disponibilidade dos produtos e faça seu pedido direto com a loja.</p>
+          <div class="note-line"></div>
+        </aside>
       </div>
-
-      <div class="category-card reveal">
-        <h3>Tabacaria Completa</h3>
-        <p>O maior sortimento de essências e artigos para narguilé da região.</p>
-        <ul class="category-list">
-          <li>Essências variadas e Carvão de coco</li>
-          <li>Tabacos, Sedas e Piteiras</li>
-          <li>Charutos e Cigarros</li>
-          <li>Isqueiros e Maçaricos</li>
-        </ul>
+      <div class="hero-bottom">
+        <div class="hero-bottom-inner wrap">
+          <span>Santa Isabel · SP</span>
+          <span>Bebidas • Tabacaria • Conveniência</span>
+          <span class="scroll-cue"><i></i> Explore a loja</span>
+        </div>
       </div>
+    </section>
 
-      <div class="category-card reveal">
-        <h3>Acessórios & Conveniência</h3>
-        <p>Tudo o que você precisa em acessórios para equipar a sua sessão.</p>
-        <ul class="category-list">
-          <li>Peças e reposições para Narguilé</li>
-          <li>Cinzeiros e Utilidades</li>
-          <li>Artigos de conveniência geral</li>
-        </ul>
+    <div class="trust-strip">
+      <div class="trust-inner wrap">
+        <div class="trust-item"><span class="trust-icon">✳</span><div><strong>Variedade para o seu momento</strong><span>Bebidas e artigos de tabacaria</span></div></div>
+        <div class="trust-item"><span class="trust-icon">↗</span><div><strong>Pedido direto e fácil</strong><span>Fale com a equipe pelo WhatsApp</span></div></div>
+        <div class="trust-item"><span class="trust-icon">⌖</span><div><strong>No centro de Santa Isabel</strong><span>Praticidade pertinho de você</span></div></div>
       </div>
     </div>
-  </section>
 
-  <!-- GALERIA -->
-  <section class="gallery-section reveal">
-    <h2 class="section-title serif">
-      Conheça o <em>espaço.</em>
-    </h2>
-    <p class="section-subtitle">Arraste para o lado ou clique em qualquer foto para ampliar em tela cheia.</p>
-
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="assets/foto1.webp" data-fancybox="galeria-imperio" data-caption="Prateleiras e Essências">
-            <img src="assets/foto1.webp" alt="Prateleiras e Essências">
-          </a>
+    <section class="section" id="categorias">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Explore a Império</span>
+            <h2 class="serif">O que combina<br>com <em>o seu momento.</em></h2>
+          </div>
+          <p class="section-intro">Do encontro com os amigos à reposição do que faltou em casa: encontre diferentes opções em um só lugar. Consulte a loja para saber o que está disponível.</p>
         </div>
-        <div class="swiper-slide">
-          <a href="assets/foto2.webp" data-fancybox="galeria-imperio" data-caption="Variedade de Bebidas e Destilados">
-            <img src="assets/foto2.webp" alt="Variedade de Bebidas e Destilados">
+        <div class="category-grid">
+          <a class="category-card reveal" href="https://wa.me/5511973007049?text=Olá!%20Quero%20consultar%20as%20bebidas%20disponíveis." target="_blank" rel="noopener">
+            <img src="assets/foto8.webp" alt="Variedade de Bebidas e Destilados" loading="lazy">
+            <div class="category-content"><span class="category-number">01 / BEBIDAS</span><h3>Bebidas para<br>compartilhar.</h3><p>Cervejas, destilados, energéticos e outras opções para o seu encontro.</p><span class="category-link">Consultar opções <b>↗</b></span></div>
           </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto3.webp" data-fancybox="galeria-imperio" data-caption="Detalhe do Estabelecimento">
-            <img src="assets/foto3.webp" alt="Detalhe do Estabelecimento">
+          <a class="category-card reveal" href="https://wa.me/5511973007049?text=Olá!%20Quero%20consultar%20os%20produtos%20de%20tabacaria." target="_blank" rel="noopener">
+            <img src="assets/essencias.webp" alt="Artigos de Tabacaria" loading="lazy">
+            <div class="category-content"><span class="category-number">02 / TABACARIA</span><h3>Seu espaço,<br>seu estilo.</h3><p>Essências, acessórios e itens para narguilé e tabacaria.</p><span class="category-link">Consultar opções <b>↗</b></span></div>
           </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto4.webp" data-fancybox="galeria-imperio" data-caption="Organização da Loja">
-            <img src="assets/foto4.webp" alt="Organização da Loja">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto5.webp" data-fancybox="galeria-imperio" data-caption="Expositor de Produtos">
-            <img src="assets/foto5.webp" alt="Expositor de Produtos">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto6.webp" data-fancybox="galeria-imperio" data-caption="Sessão de Bebidas">
-            <img src="assets/foto6.webp" alt="Sessão de Bebidas">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto7.webp" data-fancybox="galeria-imperio" data-caption="Artigos para Narguilé">
-            <img src="assets/foto7.webp" alt="Artigos para Narguilé">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto8.webp" data-fancybox="galeria-imperio" data-caption="Artigos de Tabacaria">
-            <img src="assets/foto8.webp" alt="Artigos de Tabacaria">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto9.webp" data-fancybox="galeria-imperio" data-caption="Ambiente Interno">
-            <img src="assets/foto9.webp" alt="Ambiente Interno">
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="assets/foto10.webp" data-fancybox="galeria-imperio" data-caption="Artigos da Loja">
-            <img src="assets/foto10.webp" alt="Artigos da Loja">
+          <a class="category-card reveal" href="https://wa.me/5511973007049?text=Olá!%20Quero%20consultar%20os%20itens%20de%20conveniência." target="_blank" rel="noopener">
+            <img src="assets/rosh.webp" alt="Artigos da Loja" loading="lazy">
+            <div class="category-content"><span class="category-number">03 / CONVENIÊNCIA</span><h3>Os detalhes<br>que faltavam.</h3><p>Gelo, carvão, acessórios e itens úteis para completar a ocasião.</p><span class="category-link">Consultar opções <b>↗</b></span></div>
           </a>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SOBRE / LOCALIZAÇÃO -->
-  <section class="section-container reveal">
-    <div class="info-grid">
-      <div class="info-content">
-        <h2 class="section-title serif" style="margin-bottom: 20px;">
-          Tradição e praticidade em <em>Santa Isabel.</em>
-        </h2>
-        <p>A <strong>Império Tabacaria e Distribuidora</strong> é referência para quem busca qualidade, bom atendimento e agilidade. Nada de dor de cabeça procurando o que falta para o encontro com os amigos: aqui você encontra tudo reunido em um só lugar.</p>
-        <p>Consulte a disponibilidade de produtos ou faça sua encomenda direto pelo nosso WhatsApp com rapidez.</p>
-        <a href="https://wa.me/5511973007049" target="_blank" class="btn-gold" style="display: inline-block; margin-top: 10px;">Falar com a Loja</a>
-      </div>
-
-      <div class="info-box">
-        <h4>Informações Úteis</h4>
-        <ul>
-          <li><strong>Localização:</strong> Santa Isabel - SP</li>
-          <li><strong>Atendimento:</strong> Balcão e pedidos via WhatsApp</li>
-          <li><strong>Segurança:</strong> Proibida a venda para menores de 18 anos</li>
-        </ul>
+    <div class="marquee" aria-label="Império Tabacaria e Distribuidora">
+      <div class="marquee-track" aria-hidden="true">
+        <span>Variedade de verdade</span><b>✳</b><span>Praticidade no seu dia</span><b>✳</b><span>Seu rolê começa aqui</span><b>✳</b><span>Santa Isabel — SP</span><b>✳</b><span>Variedade de verdade</span><b>✳</b><span>Praticidade no seu dia</span><b>✳</b><span>Seu rolê começa aqui</span><b>✳</b><span>Santa Isabel — SP</span><b>✳</b>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
+    <!-- SEÇÃO TOUR VIRTUAL -->
+    <section class="feature" id="espaco">
+      <div class="feature-grid wrap">
+        <div class="feature-photo reveal">
+          <a href="tour/" data-fancybox data-type="iframe" aria-label="Explore a Império em 360 graus">
+            <img src="assets/tour-virtual.webp" alt="Visão panorâmica do interior da Império" loading="lazy">
+            <!-- Barra discreta indicando interação -->
+            <div class="tour-hint">⟲ Toque para explorar em 360°</div>
+          </a>
+        </div>
+        <div class="feature-copy reveal">
+          <!-- Textinho de apoio indicando claramente que é um tour -->
+          <span class="eyebrow">Experiência Interativa 360°</span>
+          <h2 class="serif">A sua loja no centro.<br><em>Do seu jeito.</em></h2>
+          <p>A Império reúne bebidas, produtos de tabacaria e itens de conveniência em um só lugar. Uma opção prática para consultar o que precisa e falar direto com a equipe antes de sair de casa.</p>
+          <div class="feature-points">
+            <div class="feature-point"><b>01</b><span>Variedade em um só lugar</span></div>
+            <div class="feature-point"><b>02</b><span>Atendimento direto</span></div>
+            <div class="feature-point"><b>03</b><span>Pedido pelo WhatsApp</span></div>
+            <div class="feature-point"><b>04</b><span>Fácil de encontrar</span></div>
+          </div>
+          <a class="btn btn-gold" href="tour/" data-fancybox data-type="iframe">
+            Explore o espaço em 360 <span>⟲</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+      <div class="wrap">
+        <div class="gallery-head reveal">
+          <div><span class="eyebrow">Por dentro da loja</span><h2 class="serif">Conheça o<br><em>nosso espaço.</em></h2></div>
+          <p>Arraste para o lado ou clique em qualquer foto para ampliar em tela cheia.</p>
+        </div>
+        
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="assets/foto1.webp" data-fancybox="galeria-imperio" data-caption="Prateleiras e Essências">
+                <img src="assets/foto1.webp" alt="Prateleiras e Essências">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto2.webp" data-fancybox="galeria-imperio" data-caption="Variedade de Bebidas e Destilados">
+                <img src="assets/foto2.webp" alt="Variedade de Bebidas e Destilados">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto3.webp" data-fancybox="galeria-imperio" data-caption="Detalhe do Estabelecimento">
+                <img src="assets/foto3.webp" alt="Detalhe do Estabelecimento">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto4.webp" data-fancybox="galeria-imperio" data-caption="Organização da Loja">
+                <img src="assets/foto4.webp" alt="Organização da Loja">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto5.webp" data-fancybox="galeria-imperio" data-caption="Expositor de Produtos">
+                <img src="assets/foto5.webp" alt="Expositor de Produtos">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto6.webp" data-fancybox="galeria-imperio" data-caption="Sessão de Bebidas">
+                <img src="assets/foto6.webp" alt="Sessão de Bebidas">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto7.webp" data-fancybox="galeria-imperio" data-caption="Artigos para Narguilé">
+                <img src="assets/foto7.webp" alt="Artigos para Narguilé">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto8.webp" data-fancybox="galeria-imperio" data-caption="Artigos de Tabacaria">
+                <img src="assets/foto8.webp" alt="Artigos de Tabacaria">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto9.webp" data-fancybox="galeria-imperio" data-caption="Ambiente Interno">
+                <img src="assets/foto9.webp" alt="Ambiente Interno">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="assets/foto10.webp" data-fancybox="galeria-imperio" data-caption="Artigos da Loja">
+                <img src="assets/foto10.webp" alt="Artigos da Loja">
+              </a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-band">
+      <div class="order-inner wrap reveal">
+        <div><span class="eyebrow">É rápido e fácil</span><h2>Precisa de alguma coisa?<br>Chama a Império.</h2><p>Consulte a disponibilidade e faça seu pedido diretamente pelo WhatsApp.</p></div>
+        <a class="btn btn-dark" href="https://wa.me/5511973007049" target="_blank" rel="noopener">Conversar no WhatsApp <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- CONTATO E LOCALIZAÇÃO COM ÍCONES E LINKS -->
+    <section class="contact" id="contato">
+      <div class="contact-grid wrap">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">Encontre a Império</span>
+          <h2 class="serif">Estamos no<br><em>centro da cidade.</em></h2>
+          <p>Está procurando algum produto? Entre em contato para consultar a disponibilidade ou use o mapa para planejar sua visita.</p>
+          <a class="btn btn-gold" href="https://maps.app.goo.gl/us66stZHcytZ77ED8" target="_blank" rel="noopener">Abrir localização <span>↗</span></a>
+        </div>
+        
+        <div class="contact-details reveal">
+          <!-- LOCALIZAÇÃO -->
+          <a class="detail-link" href="https://maps.app.goo.gl/us66stZHcytZ77ED8" target="_blank" rel="noopener">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="detail-content">
+              <strong>Localização</strong>
+              <span>Centro · Santa Isabel — SP</span>
+            </div>
+          </a>
+
+          <!-- WHATSAPP -->
+          <a class="detail-link" href="https://wa.me/5511973007049" target="_blank" rel="noopener">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.75 1.47h.01c6.58 0 11.93-5.35 11.93-11.93a11.85 11.85 0 0 0-3.49-8.42ZM12.08 21.8a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.85 9.85 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c0 5.46-4.44 9.9-9.9 9.9Zm5.43-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+            </div>
+            <div class="detail-content">
+              <strong>WhatsApp</strong>
+              <span>Consulte produtos e faça seu pedido</span>
+            </div>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a class="detail-link" href="https://www.instagram.com/imperioo_distribuidora/" target="_blank" rel="noopener">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="detail-content">
+              <strong>Instagram</strong>
+              <span>@imperioo_distribuidora</span>
+            </div>
+          </a>
+
+          <!-- FACEBOOK -->
+          <a class="detail-link" href="https://www.facebook.com/profile.php?id=100089528454028&mibextid=ZbWKwL" target="_blank" rel="noopener">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <div class="detail-content">
+              <strong>Facebook</strong>
+              <span>Império Tabacaria e Distribuidora</span>
+            </div>
+          </a>
+
+          <!-- CONSUMO RESPONSÁVEL -->
+          <div class="detail-link">
+            <div class="detail-icon">
+              <span style="font-weight:700; font-size:12px; border:1px solid var(--gold); border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center;">18+</span>
+            </div>
+            <div class="detail-content">
+              <strong>Consumo Responsável</strong>
+              <span>Venda de bebidas alcoólicas proibida para menores de 18 anos.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <p><span>IMPÉRIO TABACARIA & DISTRIBUIDORA DE BEBIDAS</span> — Santa Isabel · SP</p>
-    <p style="margin-top: 8px; font-size: 10px; opacity: 0.5;">Se beber, não dirija. Venda proibida para menores de 18 anos.</p>
+    <div class="footer-inner wrap">
+      <span class="footer-brand">Império · Tabacaria & Distribuidora</span>
+      <span>Santa Isabel — SP · Se beber, não dirija.</span>
+      <span class="footer-credit">Desenvolvido por <a href="https://trendlocalseo.com.br" target="_blank" rel="noopener">trendlocalseo.com.br</a></span>
+      <a href="#inicio">Voltar ao topo ↑</a>
+    </div>
   </footer>
 
-  <!-- Scripts -->
+  <a class="whatsapp" href="https://wa.me/5511973007049" target="_blank" rel="noopener" aria-label="Fale com a Império pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.75 1.47h.01c6.58 0 11.93-5.35 11.93-11.93a11.85 11.85 0 0 0-3.49-8.42ZM12.08 21.8a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.85 9.85 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c0 5.46-4.44 9.9-9.9 9.9Zm5.43-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
+    <span>Falar no WhatsApp</span>
+  </a>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
 
@@ -670,44 +552,11 @@
       spaceBetween: 20,
       loop: true,
       grabCursor: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 25,
-        },
-      },
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      breakpoints: { 768: { slidesPerView: 3, spaceBetween: 25 } },
     });
-
     Fancybox.bind("[data-fancybox='galeria-imperio']", {});
-
-    // Script de Fade In (Reveal) no scroll
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(element => {
-      observer.observe(element);
-    });
   </script>
-
 </body>
 </html>
